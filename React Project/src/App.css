@@ -40,25 +40,76 @@
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    width: 100vw;
+    padding: 10px;
     text-align: center;
+    place-items: center
 }
 
+
+.pagination li a {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+
+.pagination .active a {
+  background-color: #007bff;
+  color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 영화 컴포넌트 스타일 */
 .movie {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 80%; /* 기본 너비 */
 }
 
-.movie-info h3 {
-    margin: 0;
+
+/* 영화 정보 스타일 */
+.movie-info h3, .movie-info p {
+  margin: 5px 0;
 }
 
-.movie-info p {
-    color: #666;
+/* 페이지네이션 스타일 */
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0; 
+  white-space: nowrap; /* 페이지 목록을 한 줄로 유지 */
+  width: 100%; /* 옵션: 필요에 따라 너비 조정 */
 }
 
-.listContainer {
-  height: 700px; /* 원하는 높이에 맞게 조정 */
-  overflow-y: scroll;
+.pagination li {
+  margin: 0 5px;
+}
+
+.container {
+  display: grid;
+  place-items: center; /* 수평 및 수직 가운데 정렬 */
+}
+
+/* 미디어 쿼리를 사용해 화면 너비에 따라 스타일 변경 */
+@media (max-width: 768px) {
+  .movie {
+    width: 100%; /* 화면이 작을 때 너비 조정 */
+  }
+
+  body {
+    padding: 10px;
+  }
 }
