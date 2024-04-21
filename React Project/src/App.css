@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.movie-info h3 {
+    margin: 0;
+}
+
+.movie-info p {
+    color: #666;
+}
+
+.listContainer {
+  height: 700px; /* 원하는 높이에 맞게 조정 */
+  overflow-y: scroll;
+}
