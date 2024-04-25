@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import axios from "axios";
 
 const postsPerPage = 10;
-const allPosts = Array(100).fill();
 
 function MovieComponentList() {
   const [currentPage, setCurrentPage] = useState(0);
-  const currentPosts = allPosts.slice(
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    fetchMovieList();
+  }, []);
+
+  const fetchMovieList = () => {
+    axios
+      .get("/movie/")
+      .then((Response) => {
+        setMovieList(Response.data);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
+
+  const currentPosts = movieList.slice(
     currentPage * postsPerPage,
     (currentPage + 1) * postsPerPage
   );
@@ -22,15 +39,15 @@ function MovieComponentList() {
         </Link>
       </header>
       <ul className="container">
-        {currentPosts.map(() => (
-          <MovieComponent />
+        {currentPosts.map((movie) => (
+          <MovieComponent key={movie.id} movie={movie} />
         ))}
       </ul>
       <ReactPaginate
         previousLabel={"이전"}
         nextLabel={"다음"}
         breakLabel={"..."}
-        pageCount={Math.ceil(allPosts.length / postsPerPage)}
+        pageCount={Math.ceil(movieList.length / postsPerPage)}
         marginPagesDisplayed={10}
         pageRangeDisplayed={5}
         onPageChange={({ selected }) => {
@@ -43,12 +60,12 @@ function MovieComponentList() {
     </div>
   );
 }
-let MovieComponent = () => {
+let MovieComponent = ({ movie }) => {
   return (
     <div className="movie">
       <div className="movie-info">
-        <h3>영화 제목</h3>
-        <p>영화 설명...</p>
+        <h3>{movie.title}</h3>
+        <p>{movie.genreNameList}</p>
       </div>
     </div>
   );
