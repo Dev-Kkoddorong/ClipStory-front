@@ -8,26 +8,25 @@ const postsPerPage = 10;
 function MovieComponentList() {
   const [currentPage, setCurrentPage] = useState(0);
   const [movieList, setMovieList] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     fetchMovieList();
-  }, []);
+  });
 
   const fetchMovieList = () => {
     axios
-      .get("/movie/")
+      .get(
+        `http://172.16.233.102:9292/movie/?page=${currentPage}&size=${postsPerPage}`
+      )
       .then((Response) => {
-        setMovieList(Response.data);
+        setMovieList(Response.data.data.items);
+        setPageCount(Response.data.data.totalPages);
       })
       .catch((error) => {
         console.log("Error", error);
       });
   };
-
-  const currentPosts = movieList.slice(
-    currentPage * postsPerPage,
-    (currentPage + 1) * postsPerPage
-  );
 
   return (
     <div>
@@ -39,15 +38,15 @@ function MovieComponentList() {
         </Link>
       </header>
       <ul className="container">
-        {currentPosts.map((movie) => (
-          <MovieComponent key={movie.id} movie={movie} />
+        {movieList.map((movieList) => (
+          <MovieComponent key={movieList.id} movie={movieList} />
         ))}
       </ul>
       <ReactPaginate
         previousLabel={"이전"}
         nextLabel={"다음"}
         breakLabel={"..."}
-        pageCount={Math.ceil(movieList.length / postsPerPage)}
+        pageCount={pageCount}
         marginPagesDisplayed={10}
         pageRangeDisplayed={5}
         onPageChange={({ selected }) => {
@@ -60,10 +59,11 @@ function MovieComponentList() {
     </div>
   );
 }
+
 let MovieComponent = ({ movie }) => {
   return (
     <div className="movie">
-      <div className="movie-info">
+      <div>
         <h3>{movie.title}</h3>
         <p>{movie.genreNameList}</p>
       </div>
