@@ -12,7 +12,7 @@ function MovieComponentList() {
 
   useEffect(() => {
     fetchMovieList();
-  });
+  },[currentPage]);
 
   const fetchMovieList = () => {
     axios
@@ -26,6 +26,10 @@ function MovieComponentList() {
       .catch((error) => {
         console.log("Error", error);
       });
+  };
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
   };
 
   return (
@@ -47,11 +51,9 @@ function MovieComponentList() {
         nextLabel={"다음"}
         breakLabel={"..."}
         pageCount={pageCount}
-        marginPagesDisplayed={10}
+        marginPagesDisplayed={2}
         pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          setCurrentPage(selected);
-        }}
+        onPageChange={handlePageClick}
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}
         activeClassName={"active"}
@@ -63,9 +65,9 @@ function MovieComponentList() {
 let MovieComponent = ({ movie }) => {
   return (
     <div className="movie">
-      <div>
+      <div className="movie-info">
         <h3>{movie.title}</h3>
-        <p>{movie.genreNameList}</p>
+        <h3>{movie.genreNameList}</h3>
       </div>
     </div>
   );

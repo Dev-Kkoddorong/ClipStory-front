@@ -79,7 +79,6 @@ function MovieSelectingPage2() {
       <Link to="/suggest" state={{Id:selectedId}}>
         <button>결과보기</button>
       </Link>
-      <button onClick={()=>{console.log(selectedId)}}>test</button>
     </div>
   );
 }
