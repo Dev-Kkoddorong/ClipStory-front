@@ -12,12 +12,12 @@ function MovieComponentList() {
 
   useEffect(() => {
     fetchMovieList();
-  },[currentPage]);
+  }, [currentPage]);
 
   const fetchMovieList = () => {
     axios
       .get(
-        `http://172.16.233.102:9292/movie/?page=${currentPage}&size=${postsPerPage}`
+        `http://localhost:9292/movie/?page=${currentPage}&size=${postsPerPage}`
       )
       .then((Response) => {
         setMovieList(Response.data.data.items);

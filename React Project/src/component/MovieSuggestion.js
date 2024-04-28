@@ -22,7 +22,7 @@ function MovieSuggestion() {
         likeMovieIdList:likeMovieIdList,
         hateMovieIdList:hateMovieIdList
       };
-      const response = await axios.post('http://172.16.233.102:9292/movieSuggestion/similarMovie', postData);
+      const response = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', postData);
       setMovieList(response.data.data.item);
        // 응답 데이터를 state에 저장합니다.
     } catch (error) {
