@@ -12,12 +12,12 @@ function MovieComponentList() {
 
   useEffect(() => {
     fetchMovieList();
-  }, [currentPage]); 
+  });
 
   const fetchMovieList = () => {
     axios
       .get(
-        `http://localhost:9292/movie/?page=${currentPage}&size=${postsPerPage}`
+        `http://172.16.233.102:9292/movie/?page=${currentPage}&size=${postsPerPage}`
       )
       .then((Response) => {
         setMovieList(Response.data.data.items);
@@ -28,17 +28,12 @@ function MovieComponentList() {
       });
   };
 
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-
-
   return (
     <div>
       <title>영화 추천 사이트</title>
       <header>
         <h1>영화 추천 사이트</h1>
-        <Link to="/Suggest">
+        <Link to="/select1">
           <button>영화 추천</button>
         </Link>
       </header>
@@ -52,9 +47,11 @@ function MovieComponentList() {
         nextLabel={"다음"}
         breakLabel={"..."}
         pageCount={pageCount}
-        marginPagesDisplayed={2}
+        marginPagesDisplayed={10}
         pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
+        onPageChange={({ selected }) => {
+          setCurrentPage(selected);
+        }}
         containerClassName={"pagination"}
         subContainerClassName={"pages pagination"}
         activeClassName={"active"}
@@ -66,9 +63,9 @@ function MovieComponentList() {
 let MovieComponent = ({ movie }) => {
   return (
     <div className="movie">
-      <div className="movie-info">
+      <div>
         <h3>{movie.title}</h3>
-        <h3>{movie.genreNameList}</h3>
+        <p>{movie.genreNameList}</p>
       </div>
     </div>
   );
