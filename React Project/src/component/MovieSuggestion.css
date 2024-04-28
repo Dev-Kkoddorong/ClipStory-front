@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.container {
+.suggestionContainer {
   display: flex;
   justify-content: space-between;
   width: 100%;

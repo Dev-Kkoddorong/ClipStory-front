@@ -52,7 +52,7 @@ function MovieSuggestion() {
             </Link>
           </div>
         </div>
-        <div className="container">
+        <div className="suggestionContainer">
           <div className="screen">
             <h2>{MovieList[0]}</h2>
             <p>This is the content of screen 1.</p>

@@ -98,9 +98,10 @@ body {
   margin: 0 5px;
 }
 
-.container {
+.movieComponentContainer {
   display: grid;
   place-items: center; /* 수평 및 수직 가운데 정렬 */
+  list-style-type: disc;
 }
 
 /* 미디어 쿼리를 사용해 화면 너비에 따라 스타일 변경 */

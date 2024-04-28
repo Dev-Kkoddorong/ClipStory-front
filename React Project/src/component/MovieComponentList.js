@@ -41,9 +41,9 @@ function MovieComponentList() {
           <button>영화 추천</button>
         </Link>
       </header>
-      <ul className="container">
-        {movieList.map((movieList) => (
-          <MovieComponent key={movieList.id} movie={movieList} />
+      <ul className="movieComponentContainer">
+        {movieList.map((movie) => (
+          <MovieComponent key={movie.id} movie={movie} />
         ))}
       </ul>
       <ReactPaginate
