@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 function MovieSelectingPage2() {
@@ -8,6 +9,12 @@ function MovieSelectingPage2() {
   const [selectedItem, setSelectedItem] = useState([]); // 선택된 항목을 저장할 상태
   const [movieList, setMovieList] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    const copy = [...selectedId, location.state.Id]
+    setSelectedId(copy);
+  },[]);
 
   // 검색창 핸들러
   const handleSearchChange = (e) => {
@@ -16,8 +23,9 @@ function MovieSelectingPage2() {
 
   // 목록 항목 선택 핸들러
   const handleItemClick = (item) => {
-    const copy = [...selectedItem, item.title];
-    if (copy.length <= 3) {
+    let copy = [...selectedItem];
+    if (copy.length < 3 && !copy.includes(item.title)) {
+      copy = [...selectedItem,item.id];
       setSelectedItem(copy);
       setSelectedId([...selectedId, item.id]);
     }
@@ -68,9 +76,10 @@ function MovieSelectingPage2() {
           </h3>
         </div>
       )}
-      <Link to="/suggest">
+      <Link to="/suggest" state={{Id:selectedId}}>
         <button>결과보기</button>
       </Link>
+      <button onClick={()=>{console.log(selectedId)}}>test</button>
     </div>
   );
 }

@@ -16,8 +16,9 @@ function MovieSelectingPage1() {
 
   // 목록 항목 선택 핸들러
   const handleItemClick = (item) => {
-    const copy = [...selectedItem, item.title];
-    if (copy.length <= 3) {
+    let copy = [...selectedItem];
+    if (copy.length < 3 && !copy.includes(item.title)) {
+      copy = [...selectedItem,item.id];
       setSelectedItem(copy);
       setSelectedId([...selectedId, item.id]);
     }
@@ -68,7 +69,7 @@ function MovieSelectingPage1() {
           </h3>
         </div>
       )}
-      <Link to="/select2">
+      <Link to="/select2" state={{Id:selectedId}}>
         <button>다음</button>
       </Link>
     </div>
