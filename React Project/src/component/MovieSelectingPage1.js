@@ -95,7 +95,7 @@ function MovieSelectingPage1() {
           </h3>
         </div>
       )}
-      <Link to="/select2" state={{Id:selectedId}}>
+      <Link to="/select2" state={{selectedIdFromSelect1:selectedId}}>
         <button>다음</button>
       </Link>
     </div>
