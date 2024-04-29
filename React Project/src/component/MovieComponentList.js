@@ -12,7 +12,7 @@ function MovieComponentList() {
 
   useEffect(() => {
     fetchMovieList();
-  }, [currentPage]); 
+  }, [currentPage]);
 
   const fetchMovieList = () => {
     axios
@@ -32,19 +32,18 @@ function MovieComponentList() {
     setCurrentPage(selected);
   };
 
-
   return (
     <div>
       <title>영화 추천 사이트</title>
       <header>
         <h1>영화 추천 사이트</h1>
-        <Link to="/Suggest">
+        <Link to="/select1">
           <button>영화 추천</button>
         </Link>
       </header>
-      <ul className="container">
-        {movieList.map((movieList) => (
-          <MovieComponent key={movieList.id} movie={movieList} />
+      <ul className="movieComponentContainer">
+        {movieList.map((movie) => (
+          <MovieComponent key={movie.id} movie={movie} />
         ))}
       </ul>
       <ReactPaginate
