@@ -65,7 +65,7 @@ function MovieComponentList() {
 let MovieComponent = ({ movie }) => {
   return (
     <div className="movie">
-      <div className="movie-info">
+      <div className = "movie-info">
         <h3>{movie.title}</h3>
         <h3>{movie.genreNameList}</h3>
       </div>

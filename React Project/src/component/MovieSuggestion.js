@@ -8,8 +8,9 @@ function MovieSuggestion() {
   const [MovieList, setMovieList] = useState([]);
   const [IsLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const likemovie = location.state.Id.slice(0, 3);
-  const hatemovie = location.state.Id.slice(-3);
+
+  const likeMovieIdList = location.state.selectedIdFromSelect1
+  const hateMovieIdList = location.state.selectedIdFromSelect2
 
   useEffect(() => {
     sendPostRequest();
@@ -19,15 +20,19 @@ function MovieSuggestion() {
     try {
       // `postData`는 서버로 보낼 데이터입니다.
       const postData = {
-        likeMovieIdList: likemovie,
-        hateMovieIdList: hatemovie,
+        "likeMovieIdList" : likeMovieIdList,
+        "hateMovieIdList" : hateMovieIdList
       };
-      const response = await axios.post(
-        "http://localhost:9292/movieSuggestion/similarMovie",
-        postData
-      );
-      setMovieList(response.data.data.item);
-      // 응답 데이터를 state에 저장합니다.
+      
+      const json = JSON.stringify(postData);
+      const config = {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      };      
+      const response = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', json, config)
+      setMovieList(response.data.data);
+       // 응답 데이터를 state에 저장합니다.
     } catch (error) {
       console.error("There was an error!", error);
     } finally {
@@ -56,15 +61,21 @@ function MovieSuggestion() {
         </div>
         <div className="suggestionContainer">
           <div className="screen">
-            <h2>{MovieList[0]}</h2>
+            <h2>{MovieList[0].id}</h2>
+            <h2>{MovieList[0].title}</h2>
+            <h2>{MovieList[0].genreNameList}</h2>
             <p>This is the content of screen 1.</p>
           </div>
           <div className="screen">
-            <h2>{MovieList[1]}</h2>
+            <h2>{MovieList[1].id}</h2>
+            <h2>{MovieList[1].title}</h2>
+            <h2>{MovieList[1].genreNameList}</h2>
             <p>This is the content of screen 2.</p>
           </div>
           <div className="screen">
-            <h2>{MovieList[2]}</h2>
+            <h2>{MovieList[2].id}</h2>
+            <h2>{MovieList[2].title}</h2>
+            <h2>{MovieList[2].genreNameList}</h2>
             <p>This is the content of screen 3.</p>
           </div>
         </div>

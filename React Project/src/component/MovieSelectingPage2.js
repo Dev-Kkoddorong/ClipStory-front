@@ -19,11 +19,6 @@ function MovieSelectingPage2() {
   const location = useLocation();
 
   useEffect(() => {
-    const copy = [...selectedId, location.state.Id]
-    setSelectedId(copy);
-  },[]);
-
-  useEffect(() => {
     fetchMovieList(searchTerm);
   }, [searchTerm,currentPage]);
 
@@ -102,7 +97,7 @@ function MovieSelectingPage2() {
           </h3>
         </div>
       )}
-      <Link to="/suggest" state={{Id:selectedId}}>
+      <Link to="/suggest" state={{selectedIdFromSelect2:selectedId, selectedIdFromSelect1:location.state.selectedIdFromSelect1}}>
         <button>결과보기</button>
       </Link>
     </div>
