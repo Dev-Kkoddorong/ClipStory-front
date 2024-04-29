@@ -1,45 +1,47 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "./MovieSuggestion.css";
 import axios from "axios";
 
 function MovieSuggestion() {
-  const [MovieList,setMovieList] = useState([]);
-  const [IsLoading,setIsLoading] = useState(true);
+  const [MovieList, setMovieList] = useState([]);
+  const [IsLoading, setIsLoading] = useState(true);
   const location = useLocation();
-  const likeMovieIdList = location.state.Id.slice(0,3);
-  const hateMovieIdList = location.state.Id.slice(-3);
+  const likemovie = location.state.Id.slice(0, 3);
+  const hatemovie = location.state.Id.slice(-3);
 
   useEffect(() => {
     sendPostRequest();
-  },[]);
+  }, []);
 
   const sendPostRequest = async () => {
     try {
       // `postData`는 서버로 보낼 데이터입니다.
       const postData = {
-        likeMovieIdList:likeMovieIdList,
-        hateMovieIdList:hateMovieIdList
+        likeMovieIdList: likemovie,
+        hateMovieIdList: hatemovie,
       };
-      const response = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', postData);
+      const response = await axios.post(
+        "http://localhost:9292/movieSuggestion/similarMovie",
+        postData
+      );
       setMovieList(response.data.data.item);
-       // 응답 데이터를 state에 저장합니다.
+      // 응답 데이터를 state에 저장합니다.
     } catch (error) {
-      console.error('There was an error!', error);
+      console.error("There was an error!", error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  if(IsLoading) {
+  if (IsLoading) {
     return (
       <div>
         <h1>Loading...</h1>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <div>
         <h1>Clipstory 영화추천</h1>
