@@ -4,6 +4,7 @@ import MovieSelectingPage1 from "./component/MovieSelectingPage1";
 import MovieSelectingPage2 from "./component/MovieSelectingPage2";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MovieSuggestion from "./component/MovieSuggestion";
+import Login from "./component/Login"
 
 function App() {
   return (
