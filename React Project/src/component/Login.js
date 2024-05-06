@@ -5,7 +5,8 @@ import './Login.css';
 
 function Login() {
     return (
-        <div className="login-container">
+        <div className="login-body">
+            <div className="login-container">
             <h2>Clip story 로그인</h2>
             <form action="/login" method="post">
                 <input type="text" name="username" placeholder="아이디" required /><br />
@@ -17,6 +18,8 @@ function Login() {
                 <Link to="/signup">회원가입</Link>                
             </div>
         </div>
+        </div>
+        
     );
 }
 
