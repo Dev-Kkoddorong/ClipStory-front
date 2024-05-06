@@ -26,7 +26,8 @@ function SignupForm() {
     };
 
   return (
-    <div className="container">
+    <div className="login-body">
+        <div className="container">
         <h2>회원가입</h2>
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">이름:</label>
@@ -72,6 +73,8 @@ function SignupForm() {
             <input type="submit" value="가입하기" />
         </form>
     </div>
+    </div>
+    
 );
 }
 
