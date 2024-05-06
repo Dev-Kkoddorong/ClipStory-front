@@ -36,10 +36,15 @@ function MovieComponentList() {
     <div>
       <title>영화 추천 사이트</title>
       <header>
-        <h1>영화 추천 사이트</h1>
-        <Link to="/select1">
-          <button>영화 추천</button>
-        </Link>
+        <div>
+          <div><h1>영화 추천 사이트</h1></div>
+          <div><Link to="/login"><button>로그인</button></Link></div>
+        </div>
+        <div>
+          <Link to="/select1">
+            <button>영화 추천</button>
+          </Link>
+        </div>
       </header>
       <ul className="movieComponentContainer">
         {movieList.map((movie) => (
