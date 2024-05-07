@@ -1,0 +1,20 @@
+.bottomnav {
+    width: 100%;
+    height: 409px;
+    background-size: cover;
+    margin: 0 auto;
+    margin-top: 61px;
+    background: #000;
+}
+
+.movierecommend {
+    background-image: url(../img/movierecommend.png);
+    width: 1259px;
+    height: 81px;
+}
+
+.movierecommendcontainer {
+    padding-top: 105px;
+    padding-bottom: 223px;
+    text-align: center;
+}

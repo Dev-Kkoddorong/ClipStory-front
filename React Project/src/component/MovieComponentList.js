@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import axios from "axios";
+import './MovieComponentList.css';
+import { Button } from "@mui/material";
+import Header from "./header.jsx";
+import Bottom from "./bottom.jsx"
 
-const postsPerPage = 10;
+
+const postsPerPage = 16;
 
 function MovieComponentList() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([{"id": 1, "title": "Toy story", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 2, "title": "Title2", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 3, "title": "Title3", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 4, "title": "Title4", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 5, "title": "Title5", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 6, "title": "Title6", "genreNameList": ["Adventure"], "tagList": ["pixar"]}, {"id": 7, "title": "Title7", "genreNameList": ["Adventure"], "tagList": ["pixar"]}, {"id": 8, "title": "Title8", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 9, "title": "Title9", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 10, "title": "Title10", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 11, "title": "Title11", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 12, "title": "Title12", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 13, "title": "Title13", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 14, "title": "Title14", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 15, "title": "Title15", "genreNameList": ["Adventure"], "tagList": ["pixar"]},{"id": 16, "title": "Title16", "genreNameList": ["Adventure"], "tagList": ["pixar"]}]);
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
@@ -28,51 +31,53 @@ function MovieComponentList() {
       });
   };
 
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
+  const handlePageLeftClick = () => {
+    let i=currentPage;
+    if(currentPage!=0) {
+      setCurrentPage(--i);
+    }
+  };
+
+  const handlePageRightClick = () => {
+    let i=currentPage;
+    if(currentPage!=pageCount) {
+      setCurrentPage(++i);
+    }
   };
 
   return (
-    <div>
+    <>
       <title>영화 추천 사이트</title>
-      <header>
-        <div>
-          <div><h1>영화 추천 사이트</h1></div>
-          <div><Link to="/login"><button>로그인</button></Link></div>
+      <Header/>
+      <div className="boxcontainer">
+        <div className="movielistbackground1">
+          <div className="movielistbackground2">
+            <div className="logo"></div>
+            <div className="movielistbox">
+              {movieList.map((movie) => (
+                <MovieComponent key={movie.id} movie={movie} />
+              ))}
+              <div className="pagebuttoncontainer">
+                <Button className="pageleft" onClick={handlePageLeftClick}></Button>
+                <Button className="pageright" onClick={handlePageRightClick}></Button>
+              </div>
+            </div>         
+          </div>
         </div>
-        <div>
-          <Link to="/select1">
-            <button>영화 추천</button>
-          </Link>
-        </div>
-      </header>
-      <ul className="movieComponentContainer">
-        {movieList.map((movie) => (
-          <MovieComponent key={movie.id} movie={movie} />
-        ))}
-      </ul>
-      <ReactPaginate
-        previousLabel={"이전"}
-        nextLabel={"다음"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        subContainerClassName={"pages pagination"}
-        activeClassName={"active"}
-      />
-    </div>
+      </div>
+      <Bottom/>
+    </>
   );
 }
 
 let MovieComponent = ({ movie }) => {
   return (
-    <div className="movie">
+    <div className = "moviebox">
       <div className = "movie-info">
         <h3>{movie.title}</h3>
-        <h3>{movie.genreNameList}</h3>
+        <p>{movie.genreNameList[0]}</p>
+        <p>{movie.genreNameList[1]}</p>
+        <p>{movie.genreNameList[2]}</p>
       </div>
     </div>
   );
