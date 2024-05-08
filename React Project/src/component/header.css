@@ -1,18 +1,20 @@
 .movielistheader {
-    background-image: url(../img/Header.png);
-    background-size: cover;
-    height: 210px;
-    background-position: center;
+  background-image: url(../img/Header.png);
+  background-size: cover;
+  width: 1440px;
+  height: 210px;
+  margin: auto;
+  background-position: center;
 }
 
 .loginbutton {
-    background-image: url(../img/login_img.png);
-    background-size: cover;
-    width: 120px;
-    height: 120px;
-    float:right;
+  background-image: url(../img/login_img.png);
+  background-size: cover;
+  width: 120px;
+  height: 120px;
+  float: right;
 }
 
 .loginbuttoncontainer {
-    margin-right: 90px;
+  margin-right: 90px;
 }
