@@ -80,6 +80,7 @@ let MovieComponent = ({ movie }) => {
     <div className="moviebox">
       <div className="movie-info">
         <h3>{movie.title}</h3>
+        <img src = {movie.imageUrl} alt="Dinosaur" />
         <p>{movie.genreNameList[0]}</p>
         <p>{movie.genreNameList[1]}</p>
         <p>{movie.genreNameList[2]}</p>
