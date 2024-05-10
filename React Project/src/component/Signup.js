@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './Signup.css';
-import ReactPaginate from "react-paginate";
-import { useLocation } from 'react-router-dom';
-
+import axios from "axios";
 
 function SignupForm() {
     const [formData, setFormData] = useState({
-        name: '',
         id: '',
         password: '',
-        confirm_password: ''
+        name: ''
     });
 
     const handleChange = (e) => {
@@ -20,10 +17,30 @@ function SignupForm() {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Submitted:', formData);
-    };
+    const handleSubmit = async (e) => {
+        try {
+            const postData = {
+                "customId" : formData.id,
+                "password" : formData.password,
+                "name" : formData.name
+            };
+
+            const json = JSON.stringify(postData);
+            const config = {
+                headers: {
+                  "Content-Type": 'application/json'
+                }
+              };
+
+            const response = await axios.post('http://localhost:9292/auth/signUp', json, config );
+            
+        } catch (error) {
+          console.error('회원가입 실패:', error);
+        } finally {
+            alert("회원가입에 성공했습니다.");
+            window.location.href = '/login';
+        }
+      };
 
   return (
     <div className="login-body">
@@ -65,17 +82,18 @@ function SignupForm() {
                 type="password"
                 id="confirm_password"
                 name="confirm_password"
-                value={formData.confirm_password}
-                onChange={handleChange}
+                /*value={formData.confirm_password}
+                onChange={handleChange}*/
                 required
             />
-
-            <input type="submit" value="가입하기" />
+            <button type="button" onClick={handleSubmit}>가입하기</button>
         </form>
     </div>
     </div>
     
-);
+    );
 }
+
+
 
 export default SignupForm;
