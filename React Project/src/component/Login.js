@@ -53,11 +53,8 @@ const handleSubmit = async (e) => {
         }
 
         const response = await axios.post('http://localhost:9292/auth/login', json, config)
- 
         const accessToken = response.data.data.accessToken;
-        alert(accessToken);
         localStorage.setItem('accessToken', accessToken);
-    
     
     } catch (error) {
         console.error('로그인 실패: ', error);
