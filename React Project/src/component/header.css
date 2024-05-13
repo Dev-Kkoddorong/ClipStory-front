@@ -1,9 +1,10 @@
 .movielistheader {
   background-image: url(../img/Header.png);
   background-size: cover;
-  width: 1440px;
   height: 210px;
-  margin: auto;
+  /* margin: auto; */
+  margin-left: 0;
+  margin-right: 0;
   background-position: center;
 }
 

@@ -1,0 +1,140 @@
+.loginpage1container {
+  white-space: pre-line;
+  color: var(--blue1, #4cc9f0);
+  font-family: Monoton, sans-serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: inline-flex;
+  padding: 175px 512px 305px 110px;
+  align-items: center;
+}
+
+.login3left {
+  float: left;
+}
+
+.login3right {
+  float: right;
+}
+
+.login3id {
+  color: var(--puple, #a259ff);
+  font-family: Monoton;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 597px;
+  margin-right: 421px;
+}
+
+.login3pw {
+  color: var(--puple, #a259ff);
+  font-family: Monoton;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login3loginbutton {
+  background-image: url(../img/LoginButton.png);
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 40px;
+  color: black;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 99px;
+}
+
+.login3pwsubmit {
+  display: inline-block;
+  margin-right: 22px;
+}
+
+.joinus {
+  color: var(--pink, #f531b3);
+  font-family: Monoton;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: 144px;
+  text-align: center;
+}
+
+.joinuscomment {
+  color: var(--pink, #f531b3);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: pre-line;
+  text-align: center;
+  padding-top: 27px;
+}
+
+.page2loginbutton {
+  background-image: url(../img/LoginButton.png);
+  width: 100px;
+  height: 40px;
+  color: black;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.page2loginbuttoncontainer {
+  padding-top: 37px;
+  text-align: center;
+}
+
+.notsignyet {
+  color: var(--blue1, #4cc9f0);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.notsigncontainer {
+  text-align: center;
+  padding-top: 27px;
+  padding-bottom: 151px;
+}
+
+.login3box {
+  margin-top: 50px;
+}
+
+.login3img {
+  width: 450px;
+  height: 637.895px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  margin-top: 57px;
+  margin-left: 160px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    url(../img/unsplash_akLVnqwvHZ4.png) lightgray 0px -0.135px / 100% 105.859% no-repeat;
+}

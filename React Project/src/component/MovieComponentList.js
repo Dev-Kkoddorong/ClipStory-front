@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MovieComponentList.css";
 import { Button } from "@mui/material";
-import Header from "./header.jsx";
-import Bottom from "./bottom.jsx";
+import Header from "./Header.jsx";
+import Bottom from "./Bottom.jsx";
+import LoginPage from "./LoginPage.jsx";
 
 const postsPerPage = 16;
 
@@ -71,6 +72,7 @@ function MovieComponentList() {
         </div>
       </div>
       <Bottom />
+      <LoginPage />
     </>
   );
 }
@@ -80,7 +82,7 @@ let MovieComponent = ({ movie }) => {
     <div className="moviebox">
       <div className="movie-info">
         <h3>{movie.title}</h3>
-        <img src = {movie.imageUrl} alt="Dinosaur" />
+        <img src={movie.imageUrl} alt="Dinosaur" />
         <p>{movie.genreNameList[0]}</p>
         <p>{movie.genreNameList[1]}</p>
         <p>{movie.genreNameList[2]}</p>

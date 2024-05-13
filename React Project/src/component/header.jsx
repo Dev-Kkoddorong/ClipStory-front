@@ -1,19 +1,31 @@
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-import './header.css'
+import React, { useState, useEffect, useCallback } from "react";
+import "./Header.css";
 
-function header() {
-    return (
-        <header className="movielistheader">
-        <div>
-            <div className="loginbuttoncontainer">
-                <Link to="/login">
-                    <Button className="loginbutton"></Button>
-                </Link>
-            </div>
-        </div>
-      </header>
-    );
+function Header() {
+  const [scrollPos, setScrollPos] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    setScrollPos(window.pageYOffset);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="headercontainer">
+      <div
+        className="movielistheader"
+        style={{ height: `${210 - scrollPos * 0.5}px` }}
+      >
+        <div className="loginbuttoncontainer"></div>
+      </div>
+    </div>
+  );
 }
 
-export default header;
+export default Header;
