@@ -11,7 +11,7 @@ function MovieSuggestion() {
 
   const likeMovieIdList = location.state.selectedIdFromSelect1
   const hateMovieIdList = location.state.selectedIdFromSelect2
-
+  const accessToken = localStorage.getItem('accessToken');
   useEffect(() => {
     sendPostRequest();
   }, []);
@@ -23,11 +23,11 @@ function MovieSuggestion() {
         "likeMovieIdList" : likeMovieIdList,
         "hateMovieIdList" : hateMovieIdList
       };
-      
       const json = JSON.stringify(postData);
       const config = {
         headers: {
-          "Content-Type": 'application/json'
+          "Content-Type": 'application/json',
+          "Authorization": `Bearer ${accessToken}`
         }
       };      
       const response = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', json, config)

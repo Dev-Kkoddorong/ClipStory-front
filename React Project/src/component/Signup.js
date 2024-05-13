@@ -40,7 +40,7 @@ function SignupForm() {
             alert("회원가입에 성공했습니다.");
             window.location.href = '/login';
         }
-      };
+    };
 
   return (
     <div className="login-body">
