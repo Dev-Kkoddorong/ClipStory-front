@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
 import axios from "axios";
+import "./MovieComponentList.css";
+import { Button } from "@mui/material";
+import Header from "./header.jsx";
+import Bottom from "./bottom.jsx";
 
-const postsPerPage = 10;
+const postsPerPage = 16;
 
 function MovieComponentList() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -28,46 +30,60 @@ function MovieComponentList() {
       });
   };
 
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
+  const handlePageLeftClick = () => {
+    let i = currentPage;
+    if (currentPage !== 0) {
+      setCurrentPage(--i);
+    }
+  };
+
+  const handlePageRightClick = () => {
+    let i = currentPage;
+    if (currentPage !== pageCount) {
+      setCurrentPage(++i);
+    }
   };
 
   return (
-    <div>
+    <>
       <title>영화 추천 사이트</title>
-      <header>
-        <h1>영화 추천 사이트</h1>
-        <Link to="/select1">
-          <button>영화 추천</button>
-        </Link>
-      </header>
-      <ul className="movieComponentContainer">
-        {movieList.map((movie) => (
-          <MovieComponent key={movie.id} movie={movie} />
-        ))}
-      </ul>
-      <ReactPaginate
-        previousLabel={"이전"}
-        nextLabel={"다음"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        subContainerClassName={"pages pagination"}
-        activeClassName={"active"}
-      />
-    </div>
+      <Header />
+      <div className="boxcontainer">
+        <div className="movielistbackground1">
+          <div className="movielistbackground2">
+            <div className="logo"></div>
+            <div className="movielistbox">
+              {movieList.map((movie) => (
+                <MovieComponent key={movie.id} movie={movie} />
+              ))}
+              <div className="pagebuttoncontainer">
+                <Button
+                  className="pageleft"
+                  onClick={handlePageLeftClick}
+                ></Button>
+                <Button
+                  className="pageright"
+                  onClick={handlePageRightClick}
+                ></Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Bottom />
+    </>
   );
 }
 
 let MovieComponent = ({ movie }) => {
   return (
-    <div className="movie">
-      <div className = "movie-info">
+    <div className="moviebox">
+      <div className="movie-info">
         <h3>{movie.title}</h3>
-        <h3>{movie.genreNameList}</h3>
+        <img src = {movie.imageUrl} alt="Dinosaur" />
+        <p>{movie.genreNameList[0]}</p>
+        <p>{movie.genreNameList[1]}</p>
+        <p>{movie.genreNameList[2]}</p>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ const postsPerPage = 10;
 
 function MovieSelectingPage1() {
   // 상태 관리를 위한 useState 훅 사용
-
+  const accessToken = localStorage.getItem('accessToken');
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
@@ -15,6 +15,13 @@ function MovieSelectingPage1() {
   const [selectedItem, setSelectedItem] = useState([]); // 선택된 항목을 저장할 상태
   const [movieList, setMovieList] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
+
+  useEffect(() => {
+    if (!accessToken) {
+      window.location.href = '/login';
+    }
+  }, []);
+
 
   useEffect(() => {
     fetchMovieList(searchTerm);
