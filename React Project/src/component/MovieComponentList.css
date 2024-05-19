@@ -71,11 +71,12 @@
 
 .movielistbackground2 {
   width: 100%;
-  height: 100%;
+  height: 1312px;
   border-radius: 20px;
   background: rgba(252, 252, 252, 0.8);
   text-align: center;
   position: relative;
+  padding-top: 300px;
 }
 
 .logo {

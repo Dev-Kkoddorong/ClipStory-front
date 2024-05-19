@@ -91,7 +91,6 @@ function LoginPage() {
                 name="id"
                 value={formData.id}
                 onChange={handleChange}
-                placeholder="아이디"
                 required
               />
             </form>
@@ -104,7 +103,6 @@ function LoginPage() {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="비밀번호"
                 required
               />
             </form>

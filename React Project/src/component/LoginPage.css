@@ -2,7 +2,7 @@
   white-space: pre-line;
   color: var(--blue1, #4cc9f0);
   font-family: Monoton, sans-serif;
-  font-size: 80px;
+  font-size: 100px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -22,18 +22,18 @@
 .login3id {
   color: var(--puple, #a259ff);
   font-family: Monoton;
-  font-size: 24px;
+  font-size: 48px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: 597px;
+  margin-top: 397px;
   margin-right: 421px;
 }
 
 .login3pw {
   color: var(--puple, #a259ff);
   font-family: Monoton;
-  font-size: 24px;
+  font-size: 48px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -53,18 +53,18 @@
   text-align: center;
   border-radius: 10px;
   display: inline-block;
-  margin-bottom: 99px;
 }
 
 .login3pwsubmit {
   display: inline-block;
   margin-right: 22px;
+  margin-bottom: 100px;
 }
 
 .joinus {
   color: var(--pink, #f531b3);
   font-family: Monoton;
-  font-size: 48px;
+  font-size: 100px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -75,7 +75,7 @@
 .joinuscomment {
   color: var(--pink, #f531b3);
   font-family: Inter;
-  font-size: 24px;
+  font-size: 36px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -107,7 +107,7 @@
 .notsignyet {
   color: var(--blue1, #4cc9f0);
   font-family: Inter;
-  font-size: 16px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -131,10 +131,24 @@
   border-radius: 15px;
   margin-top: 57px;
   margin-left: 160px;
+  margin-bottom: 200px;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.2) 0%,
       rgba(0, 0, 0, 0.2) 100%
     ),
     url(../img/unsplash_akLVnqwvHZ4.png) lightgray 0px -0.135px / 100% 105.859% no-repeat;
+}
+
+input {
+  font-size: 20px;
+  color:  black;
+  width: 300px;
+  border: none;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  position: relative;
+  background: #D9D9D9;
+  border-radius: 10px;
+  line-height: 20px;
 }

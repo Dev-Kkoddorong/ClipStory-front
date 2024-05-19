@@ -3,9 +3,15 @@ import "./Header.css";
 
 function Header() {
   const [scrollPos, setScrollPos] = useState(0);
+  const [loginname, setLoginName] = useState('Dev-kkodong');
+  const accessToken = localStorage.getItem('accessToken');
+
+  if(accessToken) {
+    setLoginName("로그인됨");
+  }
 
   const handleScroll = useCallback(() => {
-    setScrollPos(window.pageYOffset);
+    setScrollPos(window.scrollY);
   }, []);
 
   useEffect(() => {
@@ -18,11 +24,11 @@ function Header() {
 
   return (
     <div className="headercontainer">
-      <div
-        className="movielistheader"
-        style={{ height: `${210 - scrollPos * 0.5}px` }}
-      >
-        <div className="loginbuttoncontainer"></div>
+      <div className={scrollPos < 100 ? "movielistheader" : "smallmovielistheader"}>
+        <div>
+          <div className={scrollPos < 100 ? "headerlogo" : "headerlogosmall"}></div>
+          <div className={scrollPos < 100 ? "loginname" : "loginnamesmall"}>{loginname}</div>
+        </div>
       </div>
     </div>
   );
