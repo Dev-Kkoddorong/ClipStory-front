@@ -1,12 +1,11 @@
 import "./LoginPage.css";
-import React, { useState, useRef } from "react";
+import React, { useState, forwardRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function LoginPage() {
-  const inputForm = useRef();
+const LoginPage = forwardRef((props,ref) => {
   const onMoveToForm = () => {
-    inputForm.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleChange = (e) => {
@@ -79,7 +78,7 @@ function LoginPage() {
       </div>
       <div>
         <div className="login3left">
-          <div className="login3box" ref={inputForm}></div>
+          <div className="login3box" ref={ref}></div>
           <div className="login3img"></div>
         </div>
         <div className="login3right">
@@ -114,5 +113,5 @@ function LoginPage() {
       </div>
     </>
   );
-}
+});
 export default LoginPage;

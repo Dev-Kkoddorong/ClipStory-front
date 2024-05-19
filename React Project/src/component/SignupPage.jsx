@@ -41,7 +41,8 @@ function SignupPage() {
       console.error("회원가입 실패:", error);
     } finally {
       alert("회원가입에 성공했습니다.");
-      window.location.href = "/login";
+      window.location.href = "/";
+      localStorage.setItem("signup",true);
     }
   };
   return (

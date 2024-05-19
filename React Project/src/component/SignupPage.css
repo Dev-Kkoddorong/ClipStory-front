@@ -76,3 +76,7 @@
   margin-left: 573px;
   margin-bottom: 57px;
 }
+
+.signupbutton:hover {
+  transform: scale(1.3);
+}

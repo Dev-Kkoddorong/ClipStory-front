@@ -55,6 +55,10 @@
   display: inline-block;
 }
 
+.login3loginbutton:hover {
+  transform: scale(1.3);
+}
+
 .login3pwsubmit {
   display: inline-block;
   margin-right: 22px;
@@ -99,6 +103,10 @@
   margin: auto;
 }
 
+.page2loginbutton:hover {
+  transform: scale(1.3);
+}
+
 .page2loginbuttoncontainer {
   padding-top: 37px;
   text-align: center;
@@ -112,6 +120,10 @@
   font-weight: 700;
   line-height: normal;
   text-decoration-line: underline;
+}
+
+.notsignyet:hover {
+  color:white;
 }
 
 .notsigncontainer {

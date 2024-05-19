@@ -18,7 +18,9 @@ function MovieSelectingPage1() {
 
   useEffect(() => {
     if (!accessToken) {
-      window.location.href = '/login';
+      alert("로그인이 필요합니다!");
+      localStorage.setItem("signup",true);
+      window.location.href = "/";
     }
   }, []);
 

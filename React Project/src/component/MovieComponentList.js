@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./MovieComponentList.css";
 import { Button } from "@mui/material";
@@ -9,12 +9,18 @@ import LoginPage from "./LoginPage.jsx";
 const postsPerPage = 16;
 
 function MovieComponentList() {
+  const myRef = useRef(null);
+  
   const [currentPage, setCurrentPage] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     fetchMovieList();
+    if(localStorage.getItem("signup")) {
+      myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      localStorage.removeItem("signup");
+    }
   }, [currentPage]);
 
   const fetchMovieList = () => {
@@ -71,8 +77,10 @@ function MovieComponentList() {
           </div>
         </div>
       </div>
+      //<React.StrictMode>
       <Bottom />
-      <LoginPage />
+      //</React.StrictMode>
+      <LoginPage ref={myRef}/>
     </>
   );
 }
