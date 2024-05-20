@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./MovieComponentList.css";
 import { Button } from "@mui/material";
-import Header from "./header.jsx";
-import Bottom from "./bottom.jsx";
+import Header from "./Header.jsx";
+import Bottom from "./Bottom.jsx";
+import LoginPage from "./LoginPage.jsx";
 
 const postsPerPage = 16;
 
 function MovieComponentList() {
+  const myRef = useRef(null);
+  
   const [currentPage, setCurrentPage] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     fetchMovieList();
+    if(localStorage.getItem("signup")) {
+      myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      localStorage.removeItem("signup");
+    }
   }, [currentPage]);
 
   const fetchMovieList = () => {
@@ -70,7 +77,10 @@ function MovieComponentList() {
           </div>
         </div>
       </div>
+      //<React.StrictMode>
       <Bottom />
+      //</React.StrictMode>
+      <LoginPage ref={myRef}/>
     </>
   );
 }
@@ -80,7 +90,7 @@ let MovieComponent = ({ movie }) => {
     <div className="moviebox">
       <div className="movie-info">
         <h3>{movie.title}</h3>
-        <img src = {movie.imageUrl} alt="Dinosaur" />
+        <img src={movie.imageUrl} alt="Dinosaur" />
         <p>{movie.genreNameList[0]}</p>
         <p>{movie.genreNameList[1]}</p>
         <p>{movie.genreNameList[2]}</p>

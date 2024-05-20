@@ -1,99 +1,97 @@
-
 /* 영화 정보 스타일 */
 .movie-info h3 {
-    font-size: 20px;
+  font-size: 20px;
 }
 .movie-info ul {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 /* 영화 컴포넌트 스타일 */
 .moviebox {
-    float:left;
-    width: 250px;
-    border: 1px solid rgba(1, 114, 131, 0.80);
-    background: #FCFCFC;
-    height: 300px;
-    flex-shrink: 0;
-    margin-top: 46px;
-    margin-left: 42px;
-    align-items: center;
-    border-radius: 8px;
-    text-align: center;
-
+  float: left;
+  width: 250px;
+  border: 1px solid rgba(1, 114, 131, 0.8);
+  background: #fcfcfc;
+  height: 300px;
+  flex-shrink: 0;
+  margin-top: 46px;
+  margin-left: 42px;
+  align-items: center;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .pageright {
-    background-image: url(../img/pageright.png);
-    background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
+  background-image: url(../img/pageright.png);
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
 }
 
 .pageleft {
-    background-image: url(../img/pageleft.png); 
-    background-repeat: no-repeat;
-    width: 60px;
-    height: 60px;
+  background-image: url(../img/pageleft.png);
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
 }
 
 .pagebuttoncontainer {
-    padding-top: 1498px;
-    padding-left: 1047px;
+  padding-top: 1498px;
+  padding-left: 1047px;
 }
 
 .boxcontainer {
-    padding-top: 59px;
+  padding-top: 59px;
 }
 
 .movielistbackground1 {
-    width: 1252px;
-    height: 1612px;
-    flex-shrink: 0;
-    border-radius: 20px;
-    padding-top: 42px;
-    padding-bottom: 42px;
-    padding-left: 22px;
-    padding-right: 22px;
-    margin-left: 322px;
-    margin-right: 322px;
-    background: rgba(1, 114, 131, 0.30);
-    position: relative;
+  width: 1252px;
+  height: 1612px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+  padding-left: 22px;
+  padding-right: 22px;
+  margin: auto;
+  background: rgba(1, 114, 131, 0.3);
+  position: relative;
 }
 
 .movielistbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  z-index: 2;
 }
 
 .movielistbackground2 {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    background: rgba(252, 252, 252, 0.80);
-    text-align: center;
-    position: relative;
+  width: 100%;
+  height: 1312px;
+  border-radius: 20px;
+  background: rgba(252, 252, 252, 0.8);
+  text-align: center;
+  position: relative;
+  padding-top: 300px;
 }
 
 .logo {
-    background: url(../img/Logo.png) lightgray 50% / cover no-repeat;
-    background-color:transparent;
-    position: relative;
-    opacity: 0.5;
-    width: 645px;
-    height: 645px;
-    z-index: 1;
-    margin: auto;
+  background: url(../img/Logo.png) lightgray 50% / cover no-repeat;
+  background-color: transparent;
+  position: relative;
+  opacity: 0.5;
+  width: 645px;
+  height: 645px;
+  z-index: 1;
+  margin: auto;
 }
 
 @media (max-width: 768px) {
-    .movielistheader {
-      height: 150px;
-    }
+  .movielistheader {
+    height: 150px;
+  }
 }

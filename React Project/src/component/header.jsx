@@ -1,19 +1,37 @@
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-import './header.css'
+import React, { useState, useEffect, useCallback } from "react";
+import "./Header.css";
 
-function header() {
-    return (
-        <header className="movielistheader">
+function Header() {
+  const [scrollPos, setScrollPos] = useState(0);
+  const [loginname, setLoginName] = useState('Dev-kkodong');
+  const accessToken = localStorage.getItem('accessToken');
+
+  if(accessToken) {
+    setLoginName("로그인됨");
+  }
+
+  const handleScroll = useCallback(() => {
+    setScrollPos(window.scrollY);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="headercontainer">
+      <div className={scrollPos < 100 ? "movielistheader" : "smallmovielistheader"}>
         <div>
-            <div className="loginbuttoncontainer">
-                <Link to="/login">
-                    <Button className="loginbutton"></Button>
-                </Link>
-            </div>
+          <div className={scrollPos < 100 ? "headerlogo" : "headerlogosmall"}></div>
+          <div className={scrollPos < 100 ? "loginname" : "loginnamesmall"}>{loginname}</div>
         </div>
-      </header>
-    );
+      </div>
+    </div>
+  );
 }
 
-export default header;
+export default Header;
