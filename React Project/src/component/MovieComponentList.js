@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./MovieComponentList.css";
 import { Button } from "@mui/material";
-import Header from "./Header.jsx";
-import Bottom from "./Bottom.jsx";
+import Header from "./header.jsx";
+import Bottom from "./bottom.jsx";
 import LoginPage from "./LoginPage.jsx";
 
 const postsPerPage = 16;

@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "./Header.css";
+import "./header.css";
 
 function Header() {
   const [scrollPos, setScrollPos] = useState(0);
   const [loginname, setLoginName] = useState('Dev-kkodong');
   const accessToken = localStorage.getItem('accessToken');
-
-  if(accessToken) {
-    setLoginName("로그인됨");
-  }
+  
+  useEffect(() => {
+    if (accessToken) {
+      setLoginName("로그인됨");
+    }
+  }, [accessToken]);
 
   const handleScroll = useCallback(() => {
     setScrollPos(window.scrollY);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Bottom.css";
+import "./bottom.css";
 
 function Bottom() {
   return (
