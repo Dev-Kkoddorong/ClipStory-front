@@ -91,7 +91,7 @@ let MovieComponent = ({ movie }) => {
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">
-            <h4>{movie.title}</h4>
+            <h2>{movie.title}</h2>
         </div>
       </div>
     </div>
