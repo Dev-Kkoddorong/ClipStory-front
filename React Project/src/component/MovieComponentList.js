@@ -16,6 +16,10 @@ function MovieComponentList() {
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+  
+  useEffect(() => {
     fetchMovieList();
     if(localStorage.getItem("signup")) {
       myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });

@@ -1,0 +1,52 @@
+.LikeMovieH2 {
+  font-size: 3vw; /* 뷰포트 너비의 5% */
+  max-font-size: 50px; /* 최대 크기 설정 */
+  min-font-size: 20px; /* 최소 크기 설정 */
+  font-weight: bold;
+  color: black;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.LikeMovieH5 {
+  font-size: 15px;
+  text-align: center;
+  align-items: center;
+}
+
+.movielistheader {
+    background-color:#4CC9F0;
+    background-size: cover;
+    height: 160px;
+    /* margin: auto; */
+    margin-left: 0;
+    margin-right: 0;
+    background-position: center;
+    position: relative;
+    background: linear-gradient(to top,
+    rgba(76,201,240, 0) 5%,
+    rgba(76,201,240, 0.5) 10%,
+    rgba(76,201,240, 0.7) 20%,
+    rgba(76,201,240, 1) 30%,
+    rgba(76,201,240, 1) 100%);
+  }
+  
+
+
+  
+  .headerlogo {
+    background-image: url(../img/Header_logo.png);
+    background-repeat: no-repeat;
+    float: left;
+    width: 205px;
+    height: 120px;
+    flex-shrink: 0;
+    margin-left: 27px;
+    margin-top: 20px;
+  }
+
+
+
+  

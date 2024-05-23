@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
+import "./MovieSelectPage.css"
 import axios from "axios";
+import { Button } from "@mui/material";
+import Header from "./LikeMovieSelectHeader";
 
-const postsPerPage = 10;
+const postsPerPage = 16;
 
 function MovieSelectingPage1() {
   // 상태 관리를 위한 useState 훅 사용
@@ -16,6 +18,13 @@ function MovieSelectingPage1() {
   const [movieList, setMovieList] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
 
+  const navigate = useNavigate();
+  const [warning, setWarning] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+  
   useEffect(() => {
     if (!accessToken) {
       alert("로그인이 필요합니다!");
@@ -38,10 +47,19 @@ function MovieSelectingPage1() {
   const handleItemClick = (item) => {
     let copy = [...selectedItem];
     if (copy.length < 3 && !copy.includes(item.title)) {
-      copy = [...selectedItem,item.id];
+      copy = [...selectedItem,item.title];
       setSelectedItem(copy);
       setSelectedId([...selectedId, item.id]);
+      setWarning("");
     }
+  };
+
+  const handleRemoveItem = (title) => {
+    const updatedSelectedItem = selectedItem.filter(item => item !== title);
+    setSelectedItem(updatedSelectedItem);
+
+    const updatedSelectedId = selectedId.filter((id, index) => selectedItem[index] !== title);
+    setSelectedId(updatedSelectedId);
   };
 
   const fetchMovieList = (searchTerm) => {
@@ -58,57 +76,120 @@ function MovieSelectingPage1() {
       });
   };
 
+  const handlePageLeftClick = () => {
+    let i = currentPage;
+    if (currentPage !== 0) {
+      setCurrentPage(--i);
+    }
+  };
+
+  const handlePageRightClick = () => {
+    let i = currentPage;
+    if (currentPage !== pageCount) {
+      setCurrentPage(++i);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (selectedItem.length === 3) {
+      navigate("/select2", { state: { selectedIdFromSelect1: selectedId } });
+    } else {
+      setWarning("영화를 3개 선택해야 합니다!");
+    }
+  };
+
   return (
-    <div>
-      <header>
-        <h1>좋아하는 영화 3개를 선택하세요</h1>
-      </header>
-      <input
+    <>
+      <Header />
+      <div className="center1">
+        <input className = "center1"
         type="text"
-        placeholder="검색..."
+        placeholder="영화 제목을 입력하세요"
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <button
+      <div className = "center1">
+        <button
+        className="center1"
         onClick={() => {
           fetchMovieList(searchTerm);
         }}
+        
       >
         검색
       </button>
-      <ul>
-        {movieList.map((item) => (
-          <ul key={item.id} onClick={() => handleItemClick(item)}>
-            {item.title}
-          </ul>
-        ))}
-      </ul>
-      <ReactPaginate
-        previousLabel={"이전"}
-        nextLabel={"다음"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          setCurrentPage(selected);
-        }}
-        containerClassName={"pagination"}
-        subContainerClassName={"pages pagination"}
-        activeClassName={"active"}
-      />
+      </div>
+ 
+      </div>
       {selectedItem && (
-        <div>
-          <h3>
-            선택된 항목: {selectedItem[0]} {selectedItem[1]} {selectedItem[2]}
-          </h3>
+        <div className="center1 selected-movies">
+          <h3>선택된 영화:</h3>
+          {selectedItem.map((title, index) => (
+            <span
+            key={index}
+            className="movie-title"
+            onClick={() => handleRemoveItem(title)}
+            style={{ cursor: 'pointer' }}
+          >
+            {title}
+          </span>
+          ))}
         </div>
       )}
-      <Link to="/select2" state={{selectedIdFromSelect1:selectedId}}>
-        <button>다음</button>
-      </Link>
-    </div>
+
+      {warning && (
+        <div className="center1 warning-message">
+          <p>{warning}</p>
+        </div>
+      )}
+
+      <div className = "center1">
+        <button className="center1" onClick={goToNextPage} >
+        다음 페이지
+      </button>
+      </div>
+      
+      <div className="boxcontainer">
+        <div className="movielistbackground1">
+          <div className="movielistbackground2">
+            <div className="logo"></div>
+            <div className="movielistbox">
+              {movieList.map((movie) => (
+                <MovieComponent key={movie.id} onClick={() => handleItemClick(movie)}
+                movie={movie} />
+              ))}
+              <div className="pagebuttoncontainer">
+                <Button
+                  className="pageleft"
+                  onClick={handlePageLeftClick}
+                ></Button>
+                <Button
+                  className="pageright"
+                  onClick={handlePageRightClick}
+                ></Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    </>
   );
 }
+
+
+let MovieComponent = ({ movie, onClick }) => {
+  return (
+    <div className="moviebox" onClick = {onClick}>
+      <div className="movie-info">
+        <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
+        <div className = "detail">
+            <h2>{movie.title}</h2>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default MovieSelectingPage1;
