@@ -22,6 +22,10 @@ function MovieSelectingPage1() {
   const [warning, setWarning] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+  
+  useEffect(() => {
     if (!accessToken) {
       alert("로그인이 필요합니다!");
       localStorage.setItem("signup",true);

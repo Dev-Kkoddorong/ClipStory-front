@@ -24,6 +24,10 @@ function MovieSelectingPage2() {
   const [warning, setWarning] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+  
+  useEffect(() => {
     fetchMovieList(searchTerm);
   }, [searchTerm,currentPage]);
 
