@@ -5,6 +5,13 @@
 .movie-info ul {
   font-size: 15px;
 }
+.movie-info h4 {
+  font-size: 20px;
+}
+
+.movie-info h5 {
+  font-size: 15px;
+}
 
 /* 영화 컴포넌트 스타일 */
 .moviebox {
@@ -19,7 +26,36 @@
   align-items: center;
   border-radius: 8px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+
+.detail { 
+  border : 1px solid blue;
+  padding : 100px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: white;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 8px;
+}
+
+.moviebox:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
+
+.moviebox:hover .detail{
+  opacity: 1;
+}
+
 
 .pageright {
   background-image: url(../img/pageright.png);
