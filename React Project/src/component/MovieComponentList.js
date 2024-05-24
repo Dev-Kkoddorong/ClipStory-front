@@ -55,10 +55,39 @@ function MovieComponentList() {
     }
   };
 
+  const [genres, setGenres] = useState([
+    'Adventure', 'Animation', 'Children', 'Comedy', 'Fantasy', 'Romance', 'Drama', 'Action', 'Crime', 'Thriller',
+    'Horror', 'Mystery', 'Sci-Fi', 'War', 'Musical', 'Documentary', 'IMAX', 'Western', 'Film-Noir', 'No Genres'
+  ]);
+
+  const handleGenreClick = (genre) => {
+    
+    fetchMoviesByGenre(genre);
+  };
+
+  const fetchMoviesByGenre = (genre) => {
+    alert(genre);
+    axios.get(`http://localhost:9292/movie/genre?genreName=${genre}&page=${currentPage}&size=${postsPerPage}`)
+    .then((Response) => {
+      setMovieList(Response.data.data.items);
+      setPageCount(Response.data.data.totalPages);
+    })
+    .catch((error) => {
+      console.log("Error", error);
+    });
+  };
+
   return (
     <>
       <title>영화 추천 사이트</title>
       <Header />
+      <div className="genrelist">
+          {genres.map((genre) => (
+            <button key={genre} className="genrebutton" onClick={() => handleGenreClick(genre)}>
+              {genre}
+            </button>
+          ))}
+        </div>
       <div className="boxcontainer">
         <div className="movielistbackground1">
           <div className="movielistbackground2">
@@ -95,7 +124,7 @@ let MovieComponent = ({ movie }) => {
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">
-            <h2>{movie.title}</h2>
+            <h4>{movie.title}</h4>
         </div>
       </div>
     </div>
