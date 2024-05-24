@@ -6,7 +6,8 @@ import axios from "axios";
 import Header from "./SuggestionHeader";
 
 function MovieSuggestion() {
-  const [MovieList, setMovieList] = useState([]);
+  const [MovieListCosine, setMovieListCosine] = useState([]);
+  const [MovieListKnn, setMovieListKnn] = useState([]);
   const [IsLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
@@ -32,8 +33,11 @@ function MovieSuggestion() {
           "Authorization": `Bearer ${accessToken}`
         }
       };      
-      const response = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', json, config)
-      setMovieList(response.data.data);
+      const responseCosine = await axios.post('http://localhost:9292/movieSuggestion/similarMovie', json, config);
+      setMovieListCosine(responseCosine.data.data);
+
+      const responseKnn = await axios.post('http://localhost:9292/movieSuggestion/similarPeoplesMovie', json, config);
+      setMovieListKnn(responseKnn.data.data);
        // 응답 데이터를 state에 저장합니다.
     } catch (error) {
       console.error("There was an error!", error);
@@ -78,7 +82,7 @@ function MovieSuggestion() {
         <div className="suggestionContainer">
 
         <div className="suggestionContainer">
-        {MovieList.map((movie, index) => (
+        {MovieListCosine.map((movie, index) => (
           <div key={index} className="screen">
             <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
             <div className="text-container">
@@ -101,7 +105,7 @@ function MovieSuggestion() {
         회원님과 취향이 비슷한 사람들이 시청한 영화
       </div>
       <div className="suggestionContainer">
-        {MovieList.map((movie, index) => (
+        {MovieListKnn.map((movie, index) => (
           <div key={index} className="screen">
             <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
             <div className="text-container">
