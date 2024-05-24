@@ -55,7 +55,7 @@ suggestionBody {
 }
 
 .title {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color:#007bff;
   margin-bottom: 10px;
@@ -127,22 +127,22 @@ suggestionBody {
 }
 
 .recommendation-header {
-  font-size: 40px; /* 글자 크기 */
-  font-weight: bold; /* 굵게 */
-  color: #333; /* 글자 색상 */
-  text-align: center; /* 중앙 정렬 */
-  padding: 20px; /* 내부 여백 */
-  margin: 20px 0; /* 상하 여백 */
-  background-color: #fff; /* 배경색 */
-  border-radius: 10px; /* 둥근 모서리 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
-  transition: transform 0.3s, box-shadow 0.3s; /* 호버 효과 전환 */
+  font-size: 40px; 
+  font-weight: bold; 
+  color: #333; 
+  text-align: center; 
+  padding: 20px; 
+  margin: 20px 0;
+  background-color: #fff; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
 .recommendation-header:hover {
-  transform: translateY(-5px); /* 살짝 위로 올라오는 효과 */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 증가 */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 button.center1 {
@@ -151,7 +151,7 @@ button.center1 {
   border-radius: 25px;
   background: linear-gradient(45deg, #007bff, #0056b3);
   color: white;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -172,24 +172,70 @@ button.center1:active {
 
 .genre-container {
   display: flex;
-  flex-wrap: wrap; /* 화면 크기에 따라 줄 바꿈 */
-  justify-content: center; /* 중앙 정렬 */
-  gap: 10px; /* 장르 사이의 간격 */
-  margin-top: 20px; /* 위쪽 여백 */
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 20px; 
 }
 
 .genre {
-  background-color: #007bff; /* 배경색 */
-  color: #fff; /* 글자색 */
-  padding: 5px 10px; /* 내부 여백 */
-  border-radius: 20px; /* 둥근 모서리 */
-  font-size: 14px; /* 글자 크기 */
-  font-weight: bold; /* 글자 굵게 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-  transition: background-color 0.3s, transform 0.3s; /* 호버 효과 전환 */
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 5px 10px; 
+  border-radius: 20px; 
+  font-size: 25px; 
+  font-weight: bold; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s; 
 }
 
 .genre:hover {
-  background-color: #0056b3; /* 호버 시 배경색 */
-  transform: translateY(-3px); /* 살짝 위로 올라오는 효과 */
+  background-color: #0056b3; 
+  transform: translateY(-3px); 
+}
+
+/*로딩창*/
+#loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.logo1, .logo2, .logo3 {
+  background-repeat: no-repeat;
+  background-size: contain; /* 이미지를 요소에 맞게 조정 */
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  margin-left: 27px;
+  margin-top: 20px;
+  animation: bounce 1.5s infinite;
+}
+
+.logo1 {
+  background-image: url(../img/logo1.png);
+}
+
+.logo2 {
+  background-image: url(../img/logo2.png);
+  animation-delay: 0.5s; /* 로고 2의 애니메이션 딜레이 설정 */
+}
+
+.logo3 {
+  background-image: url(../img/logo3.png);
+  animation-delay: 1s; /* 로고 3의 애니메이션 딜레이 설정 */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }

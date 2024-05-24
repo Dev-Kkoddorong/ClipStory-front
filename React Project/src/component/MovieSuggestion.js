@@ -52,7 +52,13 @@ function MovieSuggestion() {
 
   if (IsLoading) {
     return (
-      <h1>Loading...</h1>
+      <> <Header />
+        <div id="loading-screen">
+       <div className = "logo1"></div>
+       <div className = "logo2"></div>
+       <div className = "logo3"></div>
+      </div>
+      </>
     );
   }  else {
     return (
