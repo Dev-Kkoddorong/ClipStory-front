@@ -131,3 +131,40 @@
     height: 150px;
   }
 }
+
+/*장르 버튼*/
+.genrelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px; /* 버튼 간의 간격 설정 */
+}
+
+.genrebutton {
+  display: inline-block; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  flex: 1 1 calc(20% - 10px); /* 한 줄에 5개씩 배치하고 간격 적용 */
+  max-width: calc(20% - 10px); /* 최대 너비 설정 */
+}
+
+.genrebutton:hover {
+  background: linear-gradient(45deg, #0056b3, #003f7f);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.genrebutton:active {
+  background: linear-gradient(45deg, #003f7f, #002a5f);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
