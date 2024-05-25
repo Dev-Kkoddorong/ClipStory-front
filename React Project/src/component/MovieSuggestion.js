@@ -82,45 +82,48 @@ function MovieSuggestion() {
         <div className="suggestionContainer">
 
         <div className="suggestionContainer">
-        {MovieListCosine.map((movie, index) => (
-          <div key={index} className="screen">
-            <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
-            <div className="text-container">
-              <h2 className="title">{movie.title}</h2>
-              <p className="overView">{movie.overView}</p>
-            
-                 <div className="genre-container">
-                 {movie.genreNameList.map((genre, genreIndex) => (
-                   <span key={genreIndex} className="genre">{genre}</span>
-                 ))}
-               </div>
-             
+          {MovieListCosine.map((movie, index) => {
+            const isScare = movie.genreNameList.includes('Horror') || movie.genreNameList.includes('Thriller');
+            const isAdult = movie.isAdult;
+            return (
+              <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
+                <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
+                <div className="text-container">
+                  <h2 className="title">{movie.title}</h2>
+                  <p className="overView">{movie.overView}</p>
+                  <div className="genre-container">
+                    {movie.genreNameList.map((genre, genreIndex) => (
+                      <span key={genreIndex} className="genre">{genre}</span>
+                    ))}
             </div>
           </div>
-        ))}
         </div>
-        </div>
-        <div>
+    );
+  })}
+</div>
+
       <div className="recommendation-header">
         회원님과 취향이 비슷한 사람들이 시청한 영화
       </div>
       <div className="suggestionContainer">
-        {MovieListKnn.map((movie, index) => (
-          <div key={index} className="screen">
-            <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
-            <div className="text-container">
-              <h2 className="title">{movie.title}</h2>
-              <p className="overView">{movie.overView}</p>
-            
-                 <div className="genre-container">
-                 {movie.genreNameList.map((genre, genreIndex) => (
-                   <span key={genreIndex} className="genre">{genre}</span>
-                 ))}
-               </div>
-             
+      {MovieListKnn.map((movie, index) => {
+            const isScare = movie.genreNameList.includes('Horror') || movie.genreNameList.includes('Thriller');
+            const isAdult = movie.isAdult;
+            return (
+              <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
+                <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
+                <div className="text-container">
+                  <h2 className="title">{movie.title}</h2>
+                  <p className="overView">{movie.overView}</p>
+                  <div className="genre-container">
+                    {movie.genreNameList.map((genre, genreIndex) => (
+                      <span key={genreIndex} className="genre">{genre}</span>
+                    ))}
             </div>
           </div>
-        ))}
+        </div>
+    );
+  })}
         </div>
         </div>
         <div className = "center1">
