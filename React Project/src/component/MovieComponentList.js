@@ -66,7 +66,6 @@ function MovieComponentList() {
   };
 
   const fetchMoviesByGenre = (genre) => {
-    alert(genre);
     axios.get(`http://localhost:9292/movie/genre?genreName=${genre}&page=${currentPage}&size=${postsPerPage}`)
     .then((Response) => {
       setMovieList(Response.data.data.items);
@@ -119,8 +118,10 @@ function MovieComponentList() {
 }
 
 let MovieComponent = ({ movie }) => {
+  const isScare = movie.genreNameList.includes('Horror');
+  const isAdult = movie.isAdult;
   return (
-    <div className="moviebox">
+     <div className={`moviebox ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">

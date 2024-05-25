@@ -30,6 +30,40 @@
   overflow: hidden;
 }
 
+.moviebox.horror {
+  /* Horror 영화 스타일 */
+  border-color: red;
+  background-color: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.moviebox.horror::before {
+  content: "😱"; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+}
+
+.moviebox.adult {
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.moviebox.adult::before {
+  content: "🔞"; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .detail { 
   border : 1px solid blue;
   padding : 100px 0;

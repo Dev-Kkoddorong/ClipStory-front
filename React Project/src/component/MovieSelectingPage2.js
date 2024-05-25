@@ -173,8 +173,10 @@ function MovieSelectingPage2() {
 
 
 let MovieComponent = ({ movie, onClick }) => {
+  const isScare = movie.genreNameList.includes('Horror');
+  const isAdult = movie.isAdult;
   return (
-    <div className="moviebox" onClick = {onClick}>
+    <div className={`moviebox ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`} onClick = {onClick}>
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">
