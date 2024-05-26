@@ -180,7 +180,7 @@ let MovieComponent = ({ movie, onClick }) => {
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">
-            <h2>{movie.title}</h2>
+            <h4>{movie.title}</h4>
         </div>
       </div>
     </div>
