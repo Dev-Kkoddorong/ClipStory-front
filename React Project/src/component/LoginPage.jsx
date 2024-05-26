@@ -21,34 +21,44 @@ const LoginPage = forwardRef((props,ref) => {
     password: "",
   });
 
-  const handleSubmit = async (e) => {
+
+ const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const postData = {
-        customId: formData.id,
-        password: formData.password,
-      };
+        const postData = {
+            customId: formData.id,
+            password: formData.password,
+        };
 
-      const json = JSON.stringify(postData);
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+        const config = {
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        };
 
-      const response = await axios.post(
-        "http://localhost:9292/auth/login",
-        json,
-        config
-      );
-      const accessToken = response.data.data.accessToken;
-      localStorage.setItem("accessToken", accessToken);
+        const response = await axios.post('http://localhost:9292/auth/login', postData, config);        if (response.data.success) {
+            const accessToken = response.data.data.accessToken;
+            localStorage.setItem('accessToken', accessToken);
+            alert("로그인 성공");
+            window.location.href = '/';
+        } else {
+            alert(`로그인 실패: ${response.data.message}`);
+        }
     } catch (error) {
-      console.error("로그인 실패: ", error);
-    } finally {
-      alert("로그인 성공");
-      window.location.href = "/";
+        if (error.response) {
+            if (error.response.status === 401) {
+                alert("로그인 실패: 회원 인증이 되지 않았습니다.");
+            } else {
+                alert(`로그인 실패: ${error.response.data.message}`);
+            }
+        } else {
+            alert('로그인 실패: 알 수 없는 오류가 발생했습니다.');
+        }
+        console.error('로그인 실패: ', error);
     }
-  };
+};
+
   return (
     <>
       <style>
