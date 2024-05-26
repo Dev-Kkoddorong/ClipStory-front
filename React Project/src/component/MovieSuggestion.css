@@ -20,7 +20,7 @@ suggestionBody {
   flex-direction: column; 
   align-items: center;
   justify-content: flex-start; 
-  max-width: 400px; 
+  max-width: 500px; 
   height: auto;
   border: 1px solid #ddd;
   margin: 10px;
