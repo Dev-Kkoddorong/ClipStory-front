@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import Header from "./header.jsx";
 import Bottom from "./bottom.jsx";
 import LoginPage from "./LoginPage.jsx";
+import { green } from "@mui/material/colors";
 
 const postsPerPage = 16;
 
@@ -14,18 +15,24 @@ function MovieComponentList() {
   const [currentPage, setCurrentPage] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
   
   useEffect(() => {
-    fetchMovieList();
-    if(localStorage.getItem("signup")) {
+    if (selectedGenre) {
+      fetchMoviesByGenre(selectedGenre);
+    } else {
+      fetchMovieList();
+    }
+
+    if (localStorage.getItem("signup")) {
       myRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
       localStorage.removeItem("signup");
     }
-  }, [currentPage]);
+  }, [currentPage, selectedGenre]);
 
   const fetchMovieList = () => {
     axios
@@ -55,14 +62,16 @@ function MovieComponentList() {
     }
   };
 
-  const [genres, setGenres] = useState([
+  const [genres] = useState([
     'Adventure', 'Animation', 'Children', 'Comedy', 'Fantasy', 'Romance', 'Drama', 'Action', 'Crime', 'Thriller',
-    'Horror', 'Mystery', 'Sci-Fi', 'War', 'Musical', 'Documentary', 'IMAX', 'Western', 'Film-Noir', 'No Genres'
+    'Horror', 'Mystery', 'Sci-Fi', 'War', 'Musical', 'Documentary', 'IMAX', 'Western', 'Film-Noir', 'ALL'
   ]);
 
   const handleGenreClick = (genre) => {
-    
-    fetchMoviesByGenre(genre);
+    setSelectedGenre(genre);
+    if(genre == 'ALL')
+      setSelectedGenre(null);
+    setCurrentPage(0);  
   };
 
   const fetchMoviesByGenre = (genre) => {
