@@ -8,7 +8,7 @@ function Header() {
   
   useEffect(() => {
     if (accessToken) {
-      setLoginName("로그인됨");
+      setLoginName("loged in");
     }
   }, [accessToken]);
 
