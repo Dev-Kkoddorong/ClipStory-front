@@ -75,3 +75,50 @@
   margin-left: 20px;
   float: left;
 }
+
+.logoutbutton {
+  background-color: #4cc9f0; 
+  border: none;
+  color: white; 
+  padding: 12px 24px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 10px 5px; 
+  cursor: pointer; 
+  border-radius: 25px; 
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+
+.logoutbutton:hover {
+  background-color: #0096c7; 
+  transform: scale(1.05); 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.logoutbutton:active {
+  background-color: #0077b6; 
+  transform: scale(1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.headercontent {
+  display: flex;
+  align-items: center; /* 수평 정렬 */
+  justify-content: space-between; /* 요소들 간의 간격을 동일하게 */
+  padding: 10px;
+}
+
+.headercontent div {
+  margin-bottom: 10px; /* 요소들 간의 간격 추가 */
+}
+
+/* 기존 스타일 */
+.headerlogo, .headerlogosmall, .loginname, .loginnamesmall {
+  margin: 0;
+}
