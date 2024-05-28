@@ -1,20 +1,124 @@
 .movielistheader {
-  background-image: url(../img/Header.png);
+  background-color:#4CC9F0;
   background-size: cover;
-  width: 1440px;
-  height: 210px;
-  margin: auto;
+  height: 160px;
+  /* margin: auto; */
+  margin-left: 0;
+  margin-right: 0;
   background-position: center;
+  position: relative;
+  background: linear-gradient(to top,
+  rgba(76,201,240, 0) 5%,
+  rgba(76,201,240, 0.5) 10%,
+  rgba(76,201,240, 0.7) 20%,
+  rgba(76,201,240, 1) 30%,
+  rgba(76,201,240, 1) 100%);
 }
 
-.loginbutton {
-  background-image: url(../img/login_img.png);
+.smallmovielistheader {
+  background-color:#4cc9f0;
   background-size: cover;
-  width: 120px;
-  height: 120px;
-  float: right;
+  width: 100%;
+  height: 77px;
+  background-position: center;
+  margin-left: 0;
+  margin-right: 0;
+  position: fixed;
+  z-index: 10;
+  background: linear-gradient(to top,
+  rgba(76,201,240, 0) 5%,
+  rgba(76,201,240, 0.5) 10%,
+  rgba(76,201,240, 0.7) 20%,
+  rgba(76,201,240, 1) 30%,
+  rgba(76,201,240, 1) 100%);
 }
 
-.loginbuttoncontainer {
-  margin-right: 90px;
+.loginname {
+  float: right;
+  color: #FCFCFC;
+  font-family: "Abyssinica SIL";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 80px;
+  margin-right: 17px;
+}
+
+.loginnamesmall {
+  float: right;
+  color: #FCFCFC;
+  font-family: "Abyssinica SIL";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 18px;
+  margin-right: 17px;
+}
+
+.headerlogo {
+  background-image: url(../img/Header_logo.png);
+  background-repeat: no-repeat;
+  float: left;
+  width: 205px;
+  height: 120px;
+  flex-shrink: 0;
+  margin-left: 27px;
+  margin-top: 20px;
+}
+
+.headerlogosmall {
+  background-image: url(../img/header_logo_small.png);
+  width: 213.333px;
+  height: 70px;
+  margin-left: 20px;
+  float: left;
+}
+
+.logoutbutton {
+  background-color: #4cc9f0; 
+  border: none;
+  color: white; 
+  padding: 12px 24px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 10px 5px; 
+  cursor: pointer; 
+  border-radius: 25px; 
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+
+.logoutbutton:hover {
+  background-color: #0096c7; 
+  transform: scale(1.05); 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.logoutbutton:active {
+  background-color: #0077b6; 
+  transform: scale(1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.headercontent {
+  display: flex;
+  align-items: center; /* 수평 정렬 */
+  justify-content: space-between; /* 요소들 간의 간격을 동일하게 */
+  padding: 10px;
+}
+
+.headercontent div {
+  margin-bottom: 10px; /* 요소들 간의 간격 추가 */
+}
+
+/* 기존 스타일 */
+.headerlogo, .headerlogosmall, .loginname, .loginnamesmall {
+  margin: 0;
 }

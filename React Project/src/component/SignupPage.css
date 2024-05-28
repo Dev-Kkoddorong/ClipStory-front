@@ -1,0 +1,82 @@
+.signupleft {
+  float: left;
+}
+
+.signupright {
+  float: right;
+}
+
+.signupimg {
+  width: 450px;
+  height: 637.895px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    url(../img/signupimg.png) lightgray 0px -0.135px / 100% 105.859% no-repeat;
+  margin-top: 144px;
+  margin-right: 214px;
+  margin-bottom: 100px;
+}
+
+.signupid {
+  color: var(--puple, #a259ff);
+  font-family: Monoton;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 164px;
+  margin-left: 476px;
+}
+
+.signupidinput {
+  margin-left: 472px;
+  width: 250px;
+}
+
+.signuppw {
+  color: var(--puple, #a259ff);
+  font-family: Monoton;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 472px;
+}
+
+.signupname {
+  color: var(--puple, #a259ff);
+  font-family: Monoton;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 472px;
+}
+
+.signupbutton {
+  background-image: url(../img/LoginButton.png);
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 40px;
+  color: black;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 50px;
+  margin-left: 573px;
+  margin-bottom: 57px;
+}
+
+.signupbutton:hover {
+  transform: scale(1.3);
+}

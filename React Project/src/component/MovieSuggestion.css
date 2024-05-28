@@ -1,32 +1,274 @@
-body {
-  font-family: Arial, sans-serif;
+suggestionBody {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5; 
+  margin: 0;
+  padding: 0;
 }
 
 .suggestionContainer {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap; 
   width: 100%;
+  padding: 20px;
+  box-sizing: border-box; 
+  gap: 10px;
 }
 
 .screen {
-  width: 30%;
-  height: 400px;
-  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: flex-start; 
+  max-width: 500px; 
+  height: auto;
+  border: 1px solid #ddd;
   margin: 10px;
+  background-color: #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  overflow: hidden; 
+  transition: transform 0.3s, box-shadow 0.3s; 
+  padding: 20px;
+  margin: 10px 0; 
+  position: relative; 
+}
+
+.screen:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.screen.horror {
+  /* Horror 영화 스타일 */
+  border-color: red;
+  background-color: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.screen.horror::before {
+  content: "😱"; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 40px;
+}
+
+.screen.adult {
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.screen.adult::before {
+  content: "🔞"; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.suggestionImg {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0; 
+  margin-bottom: 15px;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color:#007bff;
+  margin-bottom: 10px;
+  animation: titleAnimation 4s infinite; /* 애니메이션 추가 */
+}
+
+@keyframes titleAnimation {
+  0% {
+    color: #000;
+    transform: scale(1);
+    text-shadow: none;
+  }
+  25% {
+    color: #000;
+    transform: scale(1.1);
+    text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    color: #000;
+    transform: scale(1.2);
+    text-shadow: 2px 2px 10px rgba(0, 123, 255, 0.5);
+  }
+  75% {
+    color: #000;
+    transform: scale(1.1);
+    text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);
+  }
+  100% {
+    color: #000;
+    transform: scale(1);
+    text-shadow: none;
+  }
+}
+
+.overView {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+  padding: 10px;
+  background-color: #f9f9f9ad;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .box {
-  border: 1px solid black;
+  border: 1px solid #007bff;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #007bff;
+  text-align: center;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-#recomment_again {
-  display: inline-block;
+.box:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 
 .content {
   margin-bottom: 20px;
+  padding: 20px;
+  color: #333;
+}
+
+.recommendation-header {
+  font-size: 40px; 
+  font-weight: bold; 
+  color: #333; 
+  text-align: center; 
+  padding: 20px; 
+  margin: 20px 0;
+  background-color: #fff; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.recommendation-header:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+button.center1 {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+button.center1:hover {
+  background: linear-gradient(45deg, #0056b3, #003f7f);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+button.center1:active {
+  background: linear-gradient(45deg, #003f7f, #002a5f);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.genre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: 20px; 
+}
+
+.genre {
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 5px 10px; 
+  border-radius: 20px; 
+  font-size: 25px; 
+  font-weight: bold; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s; 
+}
+
+.genre:hover {
+  background-color: #0056b3; 
+  transform: translateY(-3px); 
+}
+
+/*로딩창*/
+#loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.logo1, .logo2, .logo3 {
+  background-repeat: no-repeat;
+  background-size: contain; /* 이미지를 요소에 맞게 조정 */
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  margin-left: 27px;
+  margin-top: 20px;
+  animation: bounce 1.5s infinite;
+}
+
+.logo1 {
+  background-image: url(../img/logo1.png);
+}
+
+.logo2 {
+  background-image: url(../img/logo2.png);
+  animation-delay: 0.5s; /* 로고 2의 애니메이션 딜레이 설정 */
+}
+
+.logo3 {
+  background-image: url(../img/logo3.png);
+  animation-delay: 1s; /* 로고 3의 애니메이션 딜레이 설정 */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
