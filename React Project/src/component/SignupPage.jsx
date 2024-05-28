@@ -36,15 +36,25 @@ function SignupPage() {
         "http://localhost:9292/auth/signUp",
         json,
         config
-      );
-    } catch (error) {
-      console.error("회원가입 실패:", error);
-    } finally {
+            );
+      // 회원가입 성공 시
       alert("회원가입에 성공했습니다.");
+      localStorage.setItem("signup", true);
       window.location.href = "/";
-      localStorage.setItem("signup",true);
-    }
-  };
+
+        } catch (error) {
+          if (error.response) {
+              if (error.response.status === 409) {
+                alert("회원가입 실패: 이미 존재하는 아이디입니다!");
+              } else {
+                alert(`회원가입 실패: ${error.response.data.message}`);
+              }
+            } else {
+              alert('회원가입 실패: 알 수 없는 오류가 발생했습니다.');
+            }
+          console.error('회원가입 실패: ', error);
+        }
+      };
   return (
     <>
       <style>

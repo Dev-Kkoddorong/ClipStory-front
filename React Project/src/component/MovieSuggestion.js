@@ -69,69 +69,73 @@ function MovieSuggestion() {
       <>
         <Header />
       <div>
-        <div>
-        <div className = "center1">
-        <button className="center1" onClick={goToSelect1} >
-            다시 추천 받기
-          </button>
-        </div>
-          <div className="recommendation-header">
-            회원님 맞춤 영화
+          <div>
+            <div className = "center1">
+              <button className="center1" onClick={goToSelect1} >
+                  다시 추천 받기
+              </button>
+            </div>
+              <div className="recommendation-header">
+                회원님 맞춤 영화
+              </div>
           </div>
-        </div>
-        <div className="suggestionContainer">
+
+   
 
         <div className="suggestionContainer">
           {MovieListCosine.map((movie, index) => {
-            const isScare = movie.genreNameList.includes('Horror') || movie.genreNameList.includes('Thriller');
+            const isScare = movie.genreNameList.includes('Horror');
             const isAdult = movie.isAdult;
             return (
-              <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
-                <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
-                <div className="text-container">
-                  <h2 className="title">{movie.title}</h2>
-                  <p className="overView">{movie.overView}</p>
-                  <div className="genre-container">
-                    {movie.genreNameList.map((genre, genreIndex) => (
-                      <span key={genreIndex} className="genre">{genre}</span>
-                    ))}
-            </div>
-          </div>
-        </div>
-    );
-  })}
-</div>
+                    <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
+                      <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
+                        <div className="text-container">
+                          <h2 className="title">{movie.title}</h2>
+                          <p className="overView">{movie.overView}</p>
+                          <div className="genre-container">
+                            {movie.genreNameList.map((genre, genreIndex) => (
+                              <span key={genreIndex} className="genre">{genre}</span>
+                            ))}
+                          </div>
+                        </div>
+                    </div>
+                );
+            })}
+      </div>
 
-      <div className="recommendation-header">
-        회원님과 취향이 비슷한 사람들이 시청한 영화
-      </div>
-      <div className="suggestionContainer">
-      {MovieListKnn.map((movie, index) => {
-            const isScare = movie.genreNameList.includes('Horror') || movie.genreNameList.includes('Thriller');
-            const isAdult = movie.isAdult;
-            return (
-              <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
-                <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
-                <div className="text-container">
-                  <h2 className="title">{movie.title}</h2>
-                  <p className="overView">{movie.overView}</p>
-                  <div className="genre-container">
-                    {movie.genreNameList.map((genre, genreIndex) => (
-                      <span key={genreIndex} className="genre">{genre}</span>
-                    ))}
+          <div>
+            <div className="recommendation-header">
+              회원님과 취향이 비슷한 사람들이 시청한 영화
             </div>
           </div>
-        </div>
-    );
-  })}
-        </div>
-        </div>
-        <div className = "center1">
-        <button className="center1" onClick={goToMain} >
-        메인화면으로 돌아가기
-      </button>
-      </div>
-      </div>
+     
+          <div className="suggestionContainer">
+          {MovieListKnn.map((movie, index) => {
+                const isScare = movie.genreNameList.includes('Horror');
+                const isAdult = movie.isAdult;
+                      return (
+                        <div key={index} className={`screen ${isScare ? 'horror' : ''} ${isAdult ? 'adult' : ''}`}>
+                          <img src={movie.imageUrl} alt="NO IMAGE" className="suggestionImg" />
+                          <div className="text-container">
+                            <h2 className="title">{movie.title}</h2>
+                            <p className="overView">{movie.overView}</p>
+                            <div className="genre-container">
+                              {movie.genreNameList.map((genre, genreIndex) => (
+                                <span key={genreIndex} className="genre">{genre}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+            })}
+          </div>
+         
+                <div className = "center1">
+                    <button className="center1" onClick={goToMain} >
+                    메인화면으로 돌아가기
+                    </button>
+                </div>
+          </div>
       </>
     );
   }

@@ -17,6 +17,8 @@ function MovieSelectingPage1() {
   const [selectedItem, setSelectedItem] = useState([]); // 선택된 항목을 저장할 상태
   const [movieList, setMovieList] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
+  const [loadedImages, setLoadedImages] = useState([]);
+
 
   const navigate = useNavigate();
   const [warning, setWarning] = useState("");
@@ -62,13 +64,14 @@ function MovieSelectingPage1() {
     setSelectedId(updatedSelectedId);
   };
 
-  const fetchMovieList = (searchTerm) => {
+  const fetchMovieList = async (searchTerm) => {
     axios
       .get(
         `http://localhost:9292/movie/title?partOfTitle=${searchTerm}&page=${currentPage}&size=${postsPerPage}`
       )
       .then((Response) => {
         setMovieList(Response.data.data.items);
+        loadMovieImages(Response.data.data.items);
         setPageCount(Response.data.data.totalPages);
       })
       .catch((error) => {
@@ -97,6 +100,35 @@ function MovieSelectingPage1() {
       setWarning("영화를 3개 선택해야 합니다!");
     }
   };
+
+    
+  const loadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => resolve(url);
+      img.onerror = () => {
+        console.error(`Failed to load image: ${url}`);
+      
+      };
+    });
+  };
+  
+  const loadImages = async (urls) => {
+    try {
+      const results = await Promise.all(urls.map(loadImage));
+      return results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const loadMovieImages = async (movies) => {
+    const imageUrls = movies.map((movie) => movie.imageUrl);
+    const loadedUrls = await loadImages(imageUrls);
+    setLoadedImages(loadedUrls);
+  };
+  
 
   return (
     <>
@@ -157,7 +189,7 @@ function MovieSelectingPage1() {
               {movieList.map((movie) => (
                 
                 <MovieComponent key={movie.id} onClick={() => handleItemClick(movie)}
-                movie={movie} />
+                movie={movie} isLoaded={loadedImages.includes(movie.imageUrl)} />
               ))}
               <div className="pagebuttoncontainer">
                 <Button
@@ -188,7 +220,7 @@ let MovieComponent = ({ movie, onClick }) => {
       <div className="movie-info">
         <img src={movie.imageUrl} alt="NO IMAGE" class = "img"/>
         <div className = "detail">
-            <h2>{movie.title}</h2>
+            <h4>{movie.title}</h4>
         </div>
       </div>
     </div>

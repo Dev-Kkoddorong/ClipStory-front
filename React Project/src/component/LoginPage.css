@@ -114,16 +114,18 @@
 
 .notsignyet {
   color: var(--blue1, #4cc9f0);
-  font-family: Inter;
+  font-family: Inter, sans-serif;
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   text-decoration-line: underline;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .notsignyet:hover {
-  color:white;
+  color: black;
+  transform: scale(1.05); 
 }
 
 .notsigncontainer {
