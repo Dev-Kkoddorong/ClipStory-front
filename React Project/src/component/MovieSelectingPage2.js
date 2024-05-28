@@ -18,6 +18,8 @@ function MovieSelectingPage2() {
   const [selectedItem, setSelectedItem] = useState([]); // 선택된 항목을 저장할 상태
   const [movieList, setMovieList] = useState([]);
   const [selectedId, setSelectedId] = useState([]);
+  const [loadedImages, setLoadedImages] = useState([]);
+
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -77,14 +79,45 @@ function MovieSelectingPage2() {
     }
   };
 
+     
+  const loadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => resolve(url);
+      img.onerror = () => {
+        console.error(`Failed to load image: ${url}`);
+      
+      };
+    });
+  };
+  
+  const loadImages = async (urls) => {
+    try {
+      const results = await Promise.all(urls.map(loadImage));
+      return results;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  const fetchMovieList = (searchTerm) => {
+  const loadMovieImages = async (movies) => {
+    const imageUrls = movies.map((movie) => movie.imageUrl);
+    const loadedUrls = await loadImages(imageUrls);
+    setLoadedImages(loadedUrls);
+  };
+  
+
+
+
+  const fetchMovieList = async (searchTerm) => {
     axios
       .get(
         `http://localhost:9292/movie/title?partOfTitle=${searchTerm}&page=${currentPage}&size=${postsPerPage}`
       )
       .then((Response) => {
         setMovieList(Response.data.data.items);
+        loadMovieImages(Response.data.data.items);
         setPageCount(Response.data.data.totalPages);
       })
       .catch((error) => {
