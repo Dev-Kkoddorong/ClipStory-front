@@ -18,6 +18,12 @@ function SignupPage() {
   };
 
   const handleSubmit = async (e) => {
+
+    if (formData.password.length < 8) {
+      alert("비밀번호는 최소 8자리 이상이어야 합니다.");
+      return;
+    }
+
     try {
       const postData = {
         customId: formData.id,
