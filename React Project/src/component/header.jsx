@@ -3,7 +3,7 @@ import "./header.css";
 
 function Header() {
   const [scrollPos, setScrollPos] = useState(0);
-  const [loginname, setLoginName] = useState('Dev-kkodong');
+  const [loginname, setLoginName] = useState('Dev-Kkoddorong');
   const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
