@@ -10,15 +10,32 @@ function MovieSuggestion() {
   const [MovieListKnn, setMovieListKnn] = useState([]);
   const [IsLoading, setIsLoading] = useState(true);
   const location = useLocation();
-
-  const likeMovieIdList = location.state.selectedIdFromSelect1
-  const hateMovieIdList = location.state.selectedIdFromSelect2
-  const accessToken = localStorage.getItem('accessToken');
-  useEffect(() => {
-    sendPostRequest();
-  }, []);
-
   const navigate = useNavigate();
+
+  const accessToken = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+    if (!accessToken) {
+      alert("로그인이 필요합니다!");
+      localStorage.setItem("signup", true);
+      navigate("/");
+      return;
+    }
+
+    if (!location.state || location.state.selectedIdFromSelect1 == null || location.state.selectedIdFromSelect2 == null) {
+      alert("영화 선택이 필요합니다!");
+      localStorage.setItem("signup", true);
+      navigate("/");
+      return;
+    }
+
+    sendPostRequest();
+  }, [location, navigate, accessToken]);
+
+  const likeMovieIdList = location.state?.selectedIdFromSelect1
+  const hateMovieIdList = location.state?.selectedIdFromSelect2
+
+
   const sendPostRequest = async () => {
     try {
       // `postData`는 서버로 보낼 데이터입니다.
