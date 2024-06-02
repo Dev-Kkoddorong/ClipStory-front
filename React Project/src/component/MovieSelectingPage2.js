@@ -10,7 +10,7 @@ const postsPerPage = 16;
 
 function MovieSelectingPage2() {
   // 상태 관리를 위한 useState 훅 사용
-
+  const accessToken = localStorage.getItem('accessToken');
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
 
@@ -24,6 +24,14 @@ function MovieSelectingPage2() {
 
   const navigate = useNavigate();
   const [warning, setWarning] = useState("");
+
+  useEffect(() => {
+    if (!accessToken) {
+      alert("로그인이 필요합니다!");
+      localStorage.setItem("signup",true);
+      window.location.href = "/";
+    }
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
