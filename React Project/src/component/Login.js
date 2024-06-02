@@ -39,14 +39,14 @@ const handleSubmit = async (e) => {
             alert("로그인 실패");
             window.location.href = '/';
         } else {
-            alert(`로그인 실패: ${response.data.message}`);
+            alert("로그인 실패: 회원 인증이 되지 않았습니다.");
         }
     } catch (error) {
         if (error.response) {
             if (error.response.status === 401) {
                 alert("로그인 실패: 회원 인증이 되지 않았습니다.");
             } else {
-                alert(`로그인 실패: ${error.response.data.message}`);
+                alert("로그인 실패: 회원 인증이 되지 않았습니다.");
             }
         } else {
             alert('로그인 실패: 알 수 없는 오류가 발생했습니다.');
